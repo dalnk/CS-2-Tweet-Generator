@@ -1,8 +1,5 @@
 import sys
 
-# lets get the text file location
-print(sys.argv)
-
 # lets open up that file
 corpus = open(sys.argv[1],'r')
 
@@ -18,4 +15,19 @@ for line in dirty_list:
 clean_list = list(filter(None, clean_list))
 
 # let's see the fruits of our labour
-print(clean_list)
+# print(clean_list)
+
+# let's count up the frequencies
+histogram = {}
+for token in clean_list:
+    # some vodo to init and avoid null pointer
+    histogram[token] = histogram[token] if token in histogram else 0 + 1
+
+# sort the dictionary
+sorted_list = [(k, histogram) for k in sorted(histogram, key=histogram.get, reverse=True)]
+
+writer = open('output_histogram.txt', 'w')
+for line in histogram.keys():
+    buffer = '%s %d' % (line, histogram[line])
+    writer.write(buffer)
+print("wrote sorted histogram to ./output_histogram.txt")

@@ -14,20 +14,16 @@ for line in dirty_list:
 # purge those empty strings
 clean_list = list(filter(None, clean_list))
 
-# let's see the fruits of our labour
-# print(clean_list)
-
 # let's count up the frequencies
 histogram = {}
 for token in clean_list:
     # some vodo to init and avoid null pointer
-    histogram[token] = histogram[token] if token in histogram else 0 + 1
+    histogram[token] = histogram[token] + 1 if token in histogram else 1
 
-# sort the dictionary
-sorted_list = [(k, histogram) for k in sorted(histogram, key=histogram.get, reverse=True)]
-
+# open output file and write it sorted
 writer = open('output_histogram.txt', 'w')
-for line in histogram.keys():
-    buffer = '%s %d' % (line, histogram[line])
+for line in sorted(histogram.items(), key=lambda tup: tup[1], reverse=True):
+    print(line)
+    buffer = '%s %d\n' % (line[0], line[1])
     writer.write(buffer)
 print("wrote sorted histogram to ./output_histogram.txt")

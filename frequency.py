@@ -45,11 +45,10 @@ def save_histogram(histogram, filename):
 def unique_words(histogram):
     return len(histogram)
 
-def freq(histogram, word):
+def freq(histogram, word, total):
     d = dict(histogram)
-    u = unique_words(histogram)
     f = d.get(word)
-    return f / float(u)
+    return f / float(total)
 
 # todo read histogram files
 # def read_histogram(filename):

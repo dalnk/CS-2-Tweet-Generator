@@ -31,14 +31,20 @@ def histogram(filename):
         # some vodo to init and avoid null pointer
         histogram[token] = histogram[token] + 1 if token in histogram else 1
 
+    return sorted(histogram.items(), key=lambda tup: tup[1], reverse=True)
+
+# output files for quick storage
+def save_histogram(histogram, filename):
     # open output file and write it sorted
-    writer = open('output_histogram.txt', 'w')
-    for line in sorted(histogram.items(), key=lambda tup: tup[1], reverse=True):
+    writer = open(filename, 'w')
+    for line in histogram:
         print(line)
         buffer = '%s %d\n' % (line[0], line[1])
         writer.write(buffer)
     print("wrote sorted histogram to ./output_histogram.txt")
 
+# todo read histogram files
+# def read_histogram(filename):
 
 # this script requires a path be passed to it
 if __name__ == "__main__":

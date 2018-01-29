@@ -12,7 +12,6 @@ def histogram(filename):
     # lets open up that file
     corpus = open(filename,'r')
 
-    file
     # read that shit into a list
     dirty_list = corpus.read().split('\n')
 
@@ -27,7 +26,7 @@ def histogram(filename):
     # let's count up the frequencies
     histogram = {}
     for token in clean_list:
-        t = token.lower().translate(None, string.punctuation)
+        t = token.lower()
         # some vodo to init and avoid null pointer
         histogram[token] = histogram[token] + 1 if token in histogram else 1
 
@@ -42,6 +41,15 @@ def save_histogram(histogram, filename):
         buffer = '%s %d\n' % (line[0], line[1])
         writer.write(buffer)
     print("wrote sorted histogram to ./output_histogram.txt")
+
+def unique_words(histogram):
+    return len(histogram)
+
+def freq(histogram, word):
+    d = dict(histogram)
+    u = unique_words(histogram)
+    f = d.get(word)
+    return f / float(u)
 
 # todo read histogram files
 # def read_histogram(filename):

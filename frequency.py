@@ -5,8 +5,8 @@ def main(argv):
     # stop execution if file not specified
     if len(argv) == 1:
         raise Exception("No file specified")
-
-    histogram(argv[1])
+    h = histogram(argv[1])
+    save_histogram(h, "sample.histogram")
 
 def histogram(filename):
     # lets open up that file

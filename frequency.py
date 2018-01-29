@@ -8,7 +8,7 @@ def main(argv):
     h = histogram(argv[1])
     save_histogram(h, "sample.histogram")
 
-def histogram(filename):
+def read_tokens(filename):
     # lets open up that file
     corpus = open(filename,'r')
 
@@ -22,7 +22,10 @@ def histogram(filename):
 
     # purge those empty strings
     clean_list = list(filter(None, clean_list))
+    return clean_list
 
+def histogram(filename):
+    clean_list = read_tokens(filename)
     # let's count up the frequencies
     histogram = {}
     for token in clean_list:

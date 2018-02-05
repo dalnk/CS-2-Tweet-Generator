@@ -11,9 +11,17 @@ def prep_markov(filename):
 
     # base
     base = frequency.read_tokens(filename)
-    unique = frequency.histogram(filename)
 
-    for b in unique:
+    # step through corpus
+    for i in range(len(base)):
+        if nodes[base[i]]:
+            if not i+1 = len(base):
+                if nodes[base[i]][base[i+1]]:
+                    nodes[base[i]][base[i+1]] += 1
+                else:
+                    nodes[base[i]]
+
+
         nodes[b[0]] = make_word_dict(b[0], base)
 
     return nodes

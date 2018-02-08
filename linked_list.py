@@ -29,4 +29,8 @@ class Linked_List(object):
         temp_node.next = self.head
         self.head = temp_node
 
-    def find()
+    def find(self, data):
+        #todo
+        curr = head
+        while curr.next
+

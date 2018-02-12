@@ -98,6 +98,8 @@ class HashTable(object):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
 
+        bucket = self.buckets[self._bucket_index(key)]
+        bucket.delete(key)
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, delete entry associated with given key

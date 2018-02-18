@@ -14,7 +14,11 @@ def prep_markov(filename):
 
     # step through corpus
     for i in range(len(base)):
+
+        # if it's already a node
         if nodes[base[i]]:
+
+            #
             if not i+1 = len(base):
                 if nodes[base[i]][base[i+1]]:
                     nodes[base[i]][base[i+1]] += 1
